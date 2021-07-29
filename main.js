@@ -15,7 +15,7 @@ document.addEventListener('scroll', () => {
 
 // Handle scrolling when tapping on the navbar menu
 const navbarMenu = document.querySelector('.navbar__menu');
-navbarMenu.addEventListener('click', (event) => {
+navbarMenu.addEventListener('click', event => {
   const target = event.target;
   const link = target.dataset.link;
   if(link == null) {
@@ -61,25 +61,26 @@ document.addEventListener('scroll', () => {
 // Arrow up
 arrowUp.addEventListener('click', () => {
   scrollIntoView('#home');
-})
+});
 
 
 // Work
 const workBtn = document.querySelector('.work__categories');
 const workProject = document.querySelector('.work__projects');
 const projects = document.querySelectorAll('.project')
-workBtn.addEventListener('click', (e) => {
+workBtn.addEventListener('click', e => {
   const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
   if(filter == null) {
     return;
   }
 
- //Removeselection from the previous item and select the new one
+ //Remove selection from the previous item and select the new one
   const active = document.querySelector('.category__btn.selected');
-  active.classList.remove('selected');
-  const target = 
-  e.target.nodeName === 'BUTTON' ? e.target : e.target.parentNode;
-  target.classList.add('selected');
+  if (active != null) {
+    active.classList.remove('selected');
+  }
+  e.target.classList.add('selected');
+
 
 
   workProject.classList.add('anim-out');
@@ -98,17 +99,9 @@ workBtn.addEventListener('click', (e) => {
   }, 300)
 });
 
-
-
-
-
-
-
-
-
-
-
 function scrollIntoView(selector) {
   const scrollTo = document.querySelector(selector);
   scrollTo.scrollIntoView({behavior: "smooth"});
 }
+
+
