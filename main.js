@@ -104,4 +104,3 @@ function scrollIntoView(selector) {
   scrollTo.scrollIntoView({behavior: "smooth"});
 }
 
-
