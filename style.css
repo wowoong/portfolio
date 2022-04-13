@@ -6,7 +6,7 @@
   --color-dark-white: #bdbdbd;
   --color-pink: #fe918d; 
   --color-dark-pink: #ff6863;
-  --color-black: #4d4d4d;
+  --color-dark-blue: #323840;
   --color-dark-black: #000;
   --color-dark-grey: #4d4d4d;
   --color-grey: #616161;
@@ -17,11 +17,11 @@
   --color-orange: #feb546;
   
   /* Font size */
-  --font-large: 48px;
-  --font-medium: 28px;
-  --font-regular: 18px;
-  --font-small: 16px;
-  --font-micro: 14px;
+  --font-large: 50px;
+  --font-medium: 30px;
+  --font-regular: 20px;
+  --font-small: 18px;
+  --font-micro: 16px;
 
   /* Font weight */
   --weight-bold: 700;
@@ -43,7 +43,20 @@ body {
   margin: 0;
   font-family: 'Open Sans', sans-serif;
   cursor: default;
+  transition: background 0.2s linear;
 }
+body.dark {
+  background-color: var(--color-dark-black);
+  color: var(--color-light-white);
+}
+body.dark p,
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark button {
+  color: var(--color-white);
+}
+
 a {
   text-decoration: none;
   color: var(--color-white);
@@ -124,12 +137,10 @@ p {
   border-radius: var(--size-border-radius);
   border: 1px solid transparent;
 }
-
 .navbar__menu__item:hover {
   background-color: rgb(161, 161, 241);
   border-color: var(--color-white);
 }
-
 
 .navbar__toggle-btn {
   position: absolute;
@@ -180,13 +191,14 @@ p {
 .section__container {
   max-width: 1200px;
   margin: auto;
+  margin-bottom: 100px;
 }
 
 /* About */
 .about__majors {
   display: flex;
   justify-content: space-between;
-  margin: 80px 0;
+  margin: 150px 0;
 }
 .major__icon {
   width: 170px;
@@ -208,7 +220,7 @@ p {
 }
 .major__title,
 .major__description {
-  color: var(--color-dark-grey);
+  color: var(--color-white);
 }
 .major__description {
   font-size: var(--font-small);
@@ -239,7 +251,10 @@ p {
 
 /* Skills */
 #skills {
-  background-color: var(--color-yellow);
+  background-color: var(--color-light-white);
+}
+.dark #skills {
+  background-color: var(--color-dark-blue);
 }
 .skillset {
   display: flex;
@@ -251,7 +266,7 @@ p {
   color: var(--color-white)
 }
 .skillset__left {
-  flex-basis: 60%;
+  flex-basis: 100%;
   background-color: var(--color-dark-grey);
   padding: 20px 40px;
 }
@@ -262,24 +277,10 @@ p {
   display: flex;
   justify-content: space-between;
 }
-.skill__bar {
-  width: 100%;
-  height: 3px;
-  background-color: var(--color-grey);
-}
 .skill__value {
   height: 3px;
   background-color: var(--color-orange);
-}
-.skillset__right {
-  flex-basis: 40%;
-}
-.tools {
-  background-color: var(--color-grey); 
-}
-.tools, .etc {
-  padding: 20px;
-}
+} */
 
 /* Work */
 .work__categories {
@@ -336,6 +337,9 @@ p {
   justify-content: center;
   align-items: center;
   background-color: var(--color-light-white);
+}
+.dark .project {
+  background-color: var(--color-dark-grey);
 }
 .project.invisible {
   display: none;
@@ -455,6 +459,55 @@ p {
   pointer-events: auto;
 }
 
+/* Dark Mode */
+.toggle {
+  position: fixed;
+  display: inline-block;
+  bottom: 15px;
+  right: 40px;
+}
+.toggle input {
+    display: none;
+}
+.toggle label {
+    display: block;
+    width: 48px;
+    height: 24px;
+    text-indent: -90%;
+    user-select: none;
+}
+.toggle label::before,
+.toggle label::after {
+    content: "";
+    display: block;
+    position: absolute;
+    cursor: pointer;
+}
+.toggle label::before {
+    width: 100%;
+    height: 100%;
+    background-color: #dedede;
+    border-radius: 1em;
+    -webkit-transition: background-color 0.25s ease;
+    transition: background-color 0.25s ease;
+}
+.toggle label::after {
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.45);
+    -webkit-transition: left 0.25s ease;
+    transition: left 0.25s ease;
+}
+.toggle input:checked + label::before {
+    background-color: var(--color-dark-grey);
+}
+.toggle input:checked + label::after {
+    left: 24px;
+}
 
 @media screen and (max-width: 768px) {
   :root {
