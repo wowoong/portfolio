@@ -592,7 +592,13 @@ p {
     height: 50px;
     font-size: 30px;
     line-height: 50px;
-    right: 16px;
-    bottom: 16px;
+    right: 14px;
+    bottom: 40px;
   }
+  .toggle {
+  position: fixed;
+  display: inline-block;
+  bottom: 15px;
+  right: 20px;
+}
 }
